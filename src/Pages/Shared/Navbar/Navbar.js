@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/blogs'>Blogs</NavLink></li>
     </>
     return (
         <div>
