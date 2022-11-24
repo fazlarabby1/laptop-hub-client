@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "img": "https://i.ibb.co/M86Htpt/Dell-Logo.png",
+        "name": "Dell"
+    },
+    {
+        "id": 2,
+        "img": "https://i.ibb.co/ftbjxmh/HP-logo.png",
+        "name": "HP"
+    },
+    {
+        "id": 3,
+        "img": "https://i.ibb.co/d6S95S1/Asus-logo.webp",
+        "name": "ASUS"
+    }
+]

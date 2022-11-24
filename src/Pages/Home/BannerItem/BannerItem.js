@@ -20,7 +20,7 @@ const BannerItem = ({data}) => {
                 </p>
             </div>
             <div className="hidden mt-16 md:mt-40 absolute md:flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 lg:top-60 md:top-80">
-            <Link to='/categories'><button className="btn bg-blue-500 border-0">Categories</button></Link>
+            <Link to='/signup'><button className="btn bg-blue-500 border-0">Join Us</button></Link>
             </div>
             <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
                 <a href={`#slide${prev}`} className="btn btn-circle mr-5">❮</a>
