@@ -14,6 +14,8 @@ const BookingModal = ({ product, setProduct }) => {
         const location = form.location.value;
         const productName = product.productName;
         const price = product.price;
+        const productId = product._id;
+        const productImg = product.image;
 
         const booking = {
             name,
@@ -21,7 +23,9 @@ const BookingModal = ({ product, setProduct }) => {
             phone,
             location,
             productName,
-            price
+            price,
+            productId,
+            productImg
         }
         
         fetch(`${process.env.REACT_APP_API_URL}/bookings`,{

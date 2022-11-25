@@ -5,14 +5,17 @@ import Blogs from "../../Pages/Blogs/Blogs";
 import CategoryProducts from "../../Pages/CategoryProducts/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
-import MyOrders from "../../Pages/MyOrders/MyOrders";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import Error from "../../Pages/Shared/Error/Error";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -44,7 +47,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
-            }
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
         ]
     }
 ])
