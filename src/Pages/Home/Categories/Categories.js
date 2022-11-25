@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Loading from '../../../components/Loading/Loading';
-import { AuthContext } from '../../../contexts/AuthProvider';
 import CategoryCard from './CategoryCard/CategoryCard';
 
 const Categories = () => {
