@@ -1,10 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../../Layouts/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import CategoryProducts from "../../Pages/CategoryProducts/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
+import MyOrders from "../../Pages/MyOrders/MyOrders";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,8 +24,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
+                element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>,
                 loader: ({params}) => fetch(`${process.env.REACT_APP_API_URL}/products/${params.id}`),
-                element: <CategoryProducts></CategoryProducts>
             },
             {
                 path: '/signup',
@@ -32,6 +35,16 @@ export const router = createBrowserRouter([
                 path: '/login',
                 element: <LogIn></LogIn>
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            }
         ]
     }
 ])
