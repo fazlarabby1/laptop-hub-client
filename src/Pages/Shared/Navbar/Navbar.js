@@ -14,8 +14,8 @@ const Navbar = () => {
 
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/blogs'>Blogs</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/dashboard'>Dashboard</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/blogs'>Blogs</NavLink></li>
     </>
     return (
         <div className="navbar bg-blue-600 text-white shadow-lg rounded">
