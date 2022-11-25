@@ -40,7 +40,8 @@ const AllSellers = () => {
 
     return (
         <div className='mt-14 lg:ml-14 ml-0'>
-            <h2 className="text-2xl font-semibold mb-6">All Sellers</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-center underline italic">All Sellers List</h2>
+            <h2 className="text-xl font-semibold mb-6">Total Sellers: {sellers.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 

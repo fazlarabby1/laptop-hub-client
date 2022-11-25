@@ -10,6 +10,7 @@ import Error from "../../Pages/Shared/Error/Error";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import AllCustomers from "../../Pages/Dashboard/AllCustomers/AllCustomers";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allsellers',
                 element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allcustomers',
+                element: <AllCustomers></AllCustomers>
             },
         ]
     }
