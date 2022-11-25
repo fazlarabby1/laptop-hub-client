@@ -3,33 +3,47 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 const AllSellers = () => {
-    const {data: sellers = [], refetch} = useQuery({
+    const { data: sellers = [], refetch } = useQuery({
         queryKey: [],
-        queryFn: async () =>{
+        queryFn: async () => {
             const res = await fetch(`${process.env.REACT_APP_API_URL}/users/sellers`);
             const data = await res.json();
             return data;
         }
     });
 
-    const handleVerify = (id) =>{
-        fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`,{
+    const handleVerify = (id) => {
+        fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`, {
             method: 'PUT'
         })
-        .then(res => res.json())
-        .then(data =>{
-            if(data.acknowledged){
-                toast.success('Seller is successfully verified');
-                refetch();
-            }
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Seller is successfully verified');
+                    refetch();
+                }
+            })
+    };
+
+    const handleDeleteSeller = id => {
+        fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`, {
+            method: 'DELETE'
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Seller is successfully verified');
+                    refetch();
+                }
+            })
     }
-    return (    
+
+    return (
         <div className='mt-14 lg:ml-14 ml-0'>
             <h2 className="text-2xl font-semibold mb-6">All Sellers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
-                    
+
                     <thead>
                         <tr>
                             <th></th>
@@ -41,15 +55,15 @@ const AllSellers = () => {
                     </thead>
                     <tbody>
                         {
-                            sellers.map((seller, i) =><tr key={seller._id} className="hover">
-                            <th>{i + 1}</th>
-                            <td>{seller.name}</td>
-                            <td>{seller.email}</td>
-                            <td>{ seller?.verify !== 'verified' ?
-                            
-                                <button onClick={()=>handleVerify(seller._id)} className='btn btn-xs btn-primary'>Verify</button> : <p className='text-green-500'>Verified</p>}</td>
-                            <td><button className='btn btn-xs bg-red-600 border-0'>Delete</button></td>
-                        </tr>)
+                            sellers.map((seller, i) => <tr key={seller._id} className="hover">
+                                <th>{i + 1}</th>
+                                <td>{seller.name}</td>
+                                <td>{seller.email}</td>
+                                <td>{seller?.verify !== 'verified' ?
+
+                                    <button onClick={() => handleVerify(seller._id)} className='btn btn-xs btn-primary'>Verify</button> : <p className='text-green-500'>Verified</p>}</td>
+                                <td><button onClick={() => handleDeleteSeller(seller._id)} className='btn btn-xs bg-red-600 border-0'>Delete</button></td>
+                            </tr>)
                         }
                     </tbody>
                 </table>
