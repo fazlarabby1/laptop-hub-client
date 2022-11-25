@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../contexts/AuthProvider';
 
-const BookingModal = ({product}) => {
-    const handleBooking = () =>{
-        console.log('clicked')
+const BookingModal = ({ product, setProduct }) => {
+    const { user } = useContext(AuthContext);
+
+    const handleBooking = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const location = form.location.value;
+        const productName = product.productName;
+        const price = product.price;
+
+        const booking = {
+            name,
+            email,
+            phone,
+            location,
+            productName,
+            price
+        }
+        
+        fetch(`${process.env.REACT_APP_API_URL}/bookings`,{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                toast.success('Booking successful');
+                setProduct(null);
+            }
+            else{
+                toast.error(data.message);
+                setProduct(null);
+            }
+        })
     }
     return (
         <div>
@@ -10,13 +49,13 @@ const BookingModal = ({product}) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">{typeof(product)}</h3>
+                    <h3 className="text-lg font-bold">{product.productName}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-                        <input type="text" disabled className="input w-full input-bordered" />
-                        <input name='name' type="text" placeholder="Your Name" className="input w-full input-bordered" required />
-                        <input name='email' type="email" placeholder="Email Address" className="input w-full input-bordered" disabled />
+                        <input name='name' type="text" placeholder="Your Name" className="input w-full input-bordered" defaultValue={user?.displayName} required />
+                        <input name='email' type="email" className="input w-full input-bordered" defaultValue={user?.email} disabled />
                         <input name='phone' type="text" placeholder="Phone Number" className="input w-full input-bordered" required />
-                        <input className='btn w-full' type="submit" value='Submit' />
+                        <input type="text" name='location' placeholder='Enter Your Location' className="input w-full input-bordered" required />
+                        <input className='btn w-full' type="submit" value='Confirm' />
                     </form>
                 </div>
             </div>
