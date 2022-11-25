@@ -1,0 +1,74 @@
+[
+    {
+        "image": "https://i.ibb.co/4tw1nfq/dell-inspiron-5000.jpg",
+        "productName": "Dell Inspiron-5000",
+        "brand": "Dell",
+        "categoryId": "637fa71b345d495b7701f0ea",
+        "location": "Comilla",
+        "price": 33000,
+        "originalPrice": 52000,
+        "usedTime": "1 year",
+        "postedTime": "Nov 11, 2022",
+        "sellerName": "Admin"
+    },
+    {
+        "image": "https://i.ibb.co/H4YjZgw/dell-inspiron-3511.jpg",
+        "productName": "Dell Inspiron-3511",
+        "brand": "Dell",
+        "categoryId": "637fa71b345d495b7701f0ea",
+        "location": "Chittagong",
+        "price": 35000,
+        "originalPrice": 57000,
+        "usedTime": "1.5 year",
+        "postedTime": "Oct 5, 2022",
+        "sellerName": "Admin"
+    },
+    {
+        "image": "https://i.ibb.co/3BPQ56j/asus-zenbook.png",
+        "productName": "Asus Zenbook Pro Duo",
+        "brand": "Asus",
+        "categoryId": "637fa71b345d495b7701f0ec",
+        "location": "Chittagong",
+        "price": 70000,
+        "originalPrice": 140000,
+        "usedTime": "1.2 year",
+        "postedTime": "Mar 2, 2022",
+        "sellerName": "Admin"
+    },
+    {
+        "image": "https://i.ibb.co/yR3yFfh/asus-vivobook.jpg",
+        "productName": "Asus VivoBook 15",
+        "brand": "Asus",
+        "categoryId": "637fa71b345d495b7701f0ec",
+        "location": "Chittagong",
+        "price": 28000,
+        "originalPrice": 54000,
+        "usedTime": "2 year",
+        "postedTime": "Dec 29, 2022",
+        "sellerName": "Admin"
+    },
+    {
+        "image": "https://i.ibb.co/rmKDXQg/hp-pavillion.png",
+        "productName": "HP Pavilion 15",
+        "brand": "HP",
+        "categoryId": "637fa71b345d495b7701f0eb",
+        "location": "Dhaka",
+        "price": 40000,
+        "originalPrice": 85000,
+        "usedTime": "2 year",
+        "postedTime": "Jan 5, 2022",
+        "sellerName": "Admin"
+    },
+    {
+        "image": "https://i.ibb.co/84ZJQnQ/hp-probook.webp",
+        "productName": "HP Probook 450",
+        "brand": "HP",
+        "categoryId": "637fa71b345d495b7701f0eb",
+        "location": "Shylet",
+        "price": 55000,
+        "originalPrice": 88000,
+        "usedTime": "1 year",
+        "postedTime": "Apr 30, 2022",
+        "sellerName": "Admin"
+    }
+]
