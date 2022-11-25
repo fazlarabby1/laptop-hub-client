@@ -1,12 +1,11 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-    const [categoryId, setCategoryId] = useState('');
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -15,15 +14,34 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
+    const logIn = (email, password) =>{
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
     const updateUser = (userInfo) => {
         setLoading(true)
         return updateProfile(auth.currentUser, userInfo)
+    };
+
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
     }
 
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            setLoading(false);
+        });
+        return () => unSubscribe();
+    }, [])
+
     const authInfo = {
-        categoryId,
-        setCategoryId,
+        user,
         createUser,
+        logIn,
+        logOut,
         updateUser
     }
     return (

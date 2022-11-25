@@ -3,6 +3,7 @@ import Main from "../../Layouts/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import CategoryProducts from "../../Pages/CategoryProducts/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
+import LogIn from "../../Pages/LogIn/LogIn";
 import SignUp from "../../Pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <SignUp></SignUp>
+                element: <LogIn></LogIn>
             },
         ]
     }
