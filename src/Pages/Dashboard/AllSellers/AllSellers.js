@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllSellers = () => {
     const {data: sellers = [], refetch} = useQuery({
@@ -9,7 +10,20 @@ const AllSellers = () => {
             const data = await res.json();
             return data;
         }
-    })
+    });
+
+    const handleVerify = (id) =>{
+        fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`,{
+            method: 'PUT'
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.acknowledged){
+                toast.success('Seller is successfully verified');
+                refetch();
+            }
+        })
+    }
     return (    
         <div className='mt-14 lg:ml-14 ml-0'>
             <h2 className="text-2xl font-semibold mb-6">All Sellers</h2>
@@ -31,9 +45,9 @@ const AllSellers = () => {
                             <th>{i + 1}</th>
                             <td>{seller.name}</td>
                             <td>{seller.email}</td>
-                            <td>{ seller?.role !== 'verified' ?
-                            // onClick={()=>handleVerify(seller._id)}
-                                <button className='btn btn-xs btn-primary'>Verify</button> : <p className='text-green-700'>Verified</p>}</td>
+                            <td>{ seller?.verify !== 'verified' ?
+                            
+                                <button onClick={()=>handleVerify(seller._id)} className='btn btn-xs btn-primary'>Verify</button> : <p className='text-green-500'>Verified</p>}</td>
                             <td><button className='btn btn-xs bg-red-600 border-0'>Delete</button></td>
                         </tr>)
                         }
