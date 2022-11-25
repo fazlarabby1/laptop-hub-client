@@ -10,14 +10,19 @@ const SignUp = () => {
 
     const navigate = useNavigate();
     const { createUser, updateUser } = useContext(AuthContext);
-    const [error, setError] = useState('');
     const [signupError, setSignupError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     const handleSignUp = data => {
         const name = data.name;
         const email = data.email;
         const password = data.password;
+        const accountType = data.accountType;
+        const user = {
+            name, 
+            email, 
+            accountType
+        }
 
         setSignupError(null);
         createUser(email, password)
@@ -28,11 +33,27 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        toast.success('User Created Successfully');
+                        saveUserToDB(user)
+                        // setLoading(false);
                     })
-                    .catch(err=> console.log(err))
+                    .catch(err => console.log(err))
             })
             .catch(error => setSignupError(error))
+    }
+
+    const saveUserToDB = user =>{
+        fetch(`${process.env.REACT_APP_API_URL}/users`,{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            toast.success('User Created Successfully');
+        })
     }
 
     return (
@@ -75,7 +96,17 @@ const SignUp = () => {
                         />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
-                    {error?.message && <p className='text-red-600'>{error?.message}</p>}
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Select Your Account Type</span>
+                        </label>
+                        <select className='border rounded py-2' {...register("accountType")}>
+                            <option value="user" selected>User</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                        {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
+                    </div>
 
                     {signupError && <p className='text-red-600'>{signupError?.message}</p>}
                     <input className='btn bg-blue-700 w-full mt-3' type="submit" value='Sign Up' />
