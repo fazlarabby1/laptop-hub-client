@@ -42,7 +42,7 @@ const Navbar = () => {
                     <Link to='/login' className="btn">Log In</Link>
                 }
             </div>
-            <label tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost md:mx-5 lg:hidden">
+            <label title='Dashboard' tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost md:mx-5 lg:hidden">
                 <FaSlidersH className='text-2xl' />
             </label>
         </div>

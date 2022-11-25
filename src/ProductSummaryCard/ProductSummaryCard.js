@@ -1,8 +1,7 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa';
 
-const ProductSummaryCard = ({ product }) => {
-    console.log(product)
+const ProductSummaryCard = ({ product, setProduct }) => {
     const { brand, image, location, originalPrice, postedTime, price, productName, sellerName, usedTime, verified } = product;
     return (
         <div className="rounded-md shadow-lg border">
@@ -25,7 +24,7 @@ const ProductSummaryCard = ({ product }) => {
                     <p className='font-semibold'>Used Time: <span className='font-normal'>{usedTime}</span></p>
                 </div>
                 <div className='flex justify-center mt-5'>
-                    <button className='btn btn-primary w-1/2'>Purchase</button>
+                    <label onClick={() => setProduct(product)} htmlFor="booking-modal" className='btn btn-primary w-1/2'>Purchase</label>
                 </div>
             </div>
         </div>
