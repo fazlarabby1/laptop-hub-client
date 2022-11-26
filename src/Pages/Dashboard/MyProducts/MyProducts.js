@@ -22,8 +22,17 @@ const MyProducts = () => {
         return <Loading></Loading>
     }
 
-    const handleAdvertise = () => {
-        console.log('clicked');
+    const handleAdvertise = id => {
+        fetch(`${process.env.REACT_APP_API_URL}/myproducts/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Product is successfully advertised');
+                    refetch();
+                }
+            })
     };
 
     const handleDeleteProduct = id => {
@@ -69,9 +78,9 @@ const MyProducts = () => {
                                 <td>{product.productName}</td>
                                 <td>{product.price}</td>
                                 <td>{product.postedTime}</td>
-                                <td>{product?.advertise !== 'verified' ?
+                                <td>{product?.advertise !== 'advertised' ?
 
-                                    <button onClick={() => handleAdvertise(product._id)} className='btn btn-xs btn-primary'>Advertise</button> : <p className='text-green-500'>Verified</p>}</td>
+                                    <button onClick={() => handleAdvertise(product._id)} className='btn btn-xs btn-primary'>Advertise</button> : <p className='text-green-500'>Advertised</p>}</td>
                                 <td><button onClick={() => handleDeleteProduct(product._id)} className='btn btn-xs bg-red-600 border-0'>Delete</button></td>
                             </tr>)
                         }
