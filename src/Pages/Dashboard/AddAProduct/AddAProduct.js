@@ -53,6 +53,7 @@ const AddAProduct = () => {
             if(data.success){
                 const product = {
                     categoryId: categoryId,
+                    brand,
                     productName,
                     price,
                     originalPrice,
