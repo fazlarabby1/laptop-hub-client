@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllCustomers = () => {
 
@@ -12,10 +13,19 @@ const AllCustomers = () => {
         }
     });
     const handleDeleteCustomer = id =>{
-
+        fetch(`${process.env.REACT_APP_API_URL}/users/allcustomers/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Customer is successfully deleted');
+                    refetch();
+                }
+            })
     }
     return (
-        <div className='mt-14 lg:ml-14 ml-0'>
+        <div className='mt-14 lg:ml-14'>
             <h2 className="text-2xl font-semibold mb-6 text-center underline italic">All Customers List</h2>
             <h2 className="text-xl font-semibold mb-6">Total Customers {customers.length}</h2>
             <div className="overflow-x-auto">

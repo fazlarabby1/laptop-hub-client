@@ -13,14 +13,14 @@ const DashboardLayout = () => {
                     <Outlet></Outlet>
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side lg:absolute">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 bg-white lg:bg-none lg:bg-transparent lg:w-80 w-5/6 text-base-content">
 
                         <li><Link to='/dashboard'>My Orders</Link></li>
 
                                 <li><Link to='/dashboard'>My Products</Link></li>
-                                <li><Link to='/dashboard'>Add A Product</Link></li>
+                                <li><Link to='/dashboard/addproduct'>Add A Product</Link></li>
                                 <li><Link to='/dashboard'>My Buyers</Link></li>
                                 <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
                                 <li><Link to='/dashboard/allcustomers'>All Customers</Link></li>

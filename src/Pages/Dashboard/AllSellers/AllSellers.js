@@ -32,14 +32,14 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Seller is successfully verified');
+                    toast.success('Seller is successfully deleted');
                     refetch();
                 }
             })
     }
 
     return (
-        <div className='mt-14 lg:ml-14 ml-0'>
+        <div className='mt-14 lg:ml-14'>
             <h2 className="text-2xl font-semibold mb-6 text-center underline italic">All Sellers List</h2>
             <h2 className="text-xl font-semibold mb-6">Total Sellers: {sellers.length}</h2>
             <div className="overflow-x-auto">
