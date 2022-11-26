@@ -62,6 +62,7 @@ const MyProducts = () => {
                             <th>Name</th>
                             <th>Price</th>
                             <th>Posted Date</th>
+                            <th>Status</th>
                             <th>Advertise</th>
                             <th>Delete</th>
                         </tr>
@@ -78,6 +79,7 @@ const MyProducts = () => {
                                 <td>{product.productName}</td>
                                 <td>{product.price}</td>
                                 <td>{product.postedTime}</td>
+                                <td>{product?.paid ? 'Paid' : 'Available'}</td>
                                 <td>{product?.advertise !== 'advertised' ?
 
                                     <button onClick={() => handleAdvertise(product._id)} className='btn btn-xs btn-primary'>Advertise</button> : <p className='text-green-500'>Advertised</p>}</td>
