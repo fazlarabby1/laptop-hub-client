@@ -13,6 +13,7 @@ import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import AllCustomers from "../../Pages/Dashboard/AllCustomers/AllCustomers";
 import AddAProduct from "../../Pages/Dashboard/AddAProduct/AddAProduct";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <MyOrders></MyOrders>
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
             {
                 path: '/dashboard/allsellers',
@@ -61,11 +62,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddAProduct></AddAProduct>
+                element: <PrivateRoute><AddAProduct></AddAProduct></PrivateRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                loader: ({params}) => fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`),
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
         ]
     }
