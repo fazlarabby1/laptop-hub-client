@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/myproducts?email=${user?.email}`,{
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/myproducts?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -90,9 +90,14 @@ const MyProducts = () => {
                                 <td>{product.price}</td>
                                 <td>{product.postedTime}</td>
                                 <td>{product?.paid ? 'Paid' : 'Available'}</td>
-                                <td>{product?.advertise !== 'advertised' ?
-
-                                    <button onClick={() => handleAdvertise(product._id)} className='btn btn-xs btn-primary'>Advertise</button> : <p className='text-green-500'>Advertised</p>}</td>
+                                <td>{product?.paid ?
+                                    <p>Sold</p>
+                                    :
+                                    <>
+                                        {product?.advertise !== 'advertised' ?
+                                            <button onClick={() => handleAdvertise(product._id)} className='btn btn-xs btn-primary'>Advertise</button> : <p className='text-green-500'>Advertised</p>}
+                                    </>
+                                }</td>
                                 <td><button onClick={() => handleDeleteProduct(product._id)} className='btn btn-xs bg-red-600 border-0'>Delete</button></td>
                             </tr>)
                         }

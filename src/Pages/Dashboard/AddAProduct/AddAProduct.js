@@ -34,6 +34,7 @@ const AddAProduct = () => {
         const postedTime = date;
         const description = data.description;
         const brand = data.brand;
+        const productCondition = data.productCondition;
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -70,7 +71,8 @@ const AddAProduct = () => {
                     description,
                     sellerName,
                     sellerEmail,
-                    postedTime
+                    postedTime,
+                    productCondition
                 }
 
                 // saving the added product data in DataBase
@@ -140,6 +142,18 @@ const AddAProduct = () => {
                         </select>
                     </div>
 
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Select Product Condition</span>
+                        </label>
+                        <select className='border rounded py-2' {...register("productCondition")}>
+                            <option value="good" selected>Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="excellent">Excellent</option>
+                        </select>
+                        {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
+                    </div>
+
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Location</span>
@@ -164,7 +178,7 @@ const AddAProduct = () => {
 
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Used Duration</span>
+                            <span className="label-text">Purchase Year</span>
                         </label>
                         <input className="input input-bordered w-full" type='text'
                             {...register('usedTime', { required: "Must put your asking price here" })}
@@ -193,7 +207,6 @@ const AddAProduct = () => {
                         />
                         {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}
                     </div>
-                    <br />
                     <div><input className='btn bg-blue-700 md:mt-3' type="submit" value='Submit' /></div>
                 </form>
             </div>

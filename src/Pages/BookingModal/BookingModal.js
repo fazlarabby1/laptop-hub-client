@@ -10,10 +10,10 @@ const BookingModal = ({ product, setProduct }) => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
+        const productName = form.productName.value;
+        const price = form.price.value;
         const phone = form.phone.value;
         const location = form.location.value;
-        const productName = product.productName;
-        const price = product.price;
         const productId = product._id;
         const productImg = product.image;
 
@@ -56,10 +56,15 @@ const BookingModal = ({ product, setProduct }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{product.productName}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-                        <input name='name' type="text" placeholder="Your Name" className="input w-full input-bordered" defaultValue={user?.displayName} required />
+                        <input name='name' type="text" placeholder="Your Name" className="input w-full input-bordered" defaultValue={user?.displayName} disabled />
                         <input name='email' type="email" className="input w-full input-bordered" defaultValue={user?.email} disabled />
+
+                        <input name='productName' type="text" className="input w-full input-bordered" defaultValue={product.productName} disabled />
+
+                        <input name='price' type="text" className="input w-full input-bordered" defaultValue={product.price} disabled />
+
                         <input name='phone' type="text" placeholder="Phone Number" className="input w-full input-bordered" required />
-                        <input type="text" name='location' placeholder='Enter Your Location' className="input w-full input-bordered" required />
+                        <input type="text" name='location' placeholder='Enter Product Receive Location' className="input w-full input-bordered" required />
                         <input className='btn w-full' type="submit" value='Confirm' />
                     </form>
                 </div>

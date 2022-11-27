@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/dashboard'>Dashboard</NavLink></li>
+        {user?.uid && <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/dashboard'>Dashboard</NavLink></li>}
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/blogs'>Blogs</NavLink></li>
         <li><p className='font-bold text-sm'>{user?.displayName}</p></li>
         <li>{user ?

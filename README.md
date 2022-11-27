@@ -1,3 +1,36 @@
+## Laptop HUB
+
+***************************
+Live Links and Code links
+Client Site Live Link: 
+Client Site Code Link:
+Server Site Live Link:
+Server Site Code Link:
+***************************
+
+Client site Dependencies
+# react, react-router, react-hot-toast, react-icons, react-photo-view, firebase, tailwind, daisyUI, mamba UI, stripe, swiper js, react scripts, and axios.
+
+Server site Dependencies
+# mongoDB, cors, dotenv, express, jsonwebtoken, and stripe.
+***************************
+This is a laptop resale website. This website contains several functionalities. In this website, one can buy and sell products.
+
+***************************
+The home page contains a slider, categories option cards, advertise items section, about us section, and a footer.
+
+***************************
+To visit the category page or purchase a product or add a product one must become a user of this website.
+
+***************************
+For limiting users, access I have use firebase authentication system and also I have used mongodb database to save all the information related to the products and user. Along with the firebase, I have implemented the JWT verification to set different user access depending on their account type.
+
+***************************
+Here, I have implemented stripe payment system. And depending on the payment the products status will be changed in the UI.
+
+***************************
+In the dashboard route, different user will see different options. For example, admin will see All Users, and All Sellers.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
