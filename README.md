@@ -2,7 +2,7 @@
 
 ***************************
 Live Links and Code links
-Client Site Live Link: 
+Client Site Live Link: https://laptop-resale-404.web.app/
 Client Site Code Link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-fazlarabby1
 
 ***************************

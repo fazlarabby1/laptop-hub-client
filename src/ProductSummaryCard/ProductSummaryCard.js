@@ -74,7 +74,7 @@ const ProductSummaryCard = ({ product, setProduct }) => {
                 </div>
                 <div className='md:flex justify-between'>
                     <p className='font-semibold'>Posted Time: <span className='font-normal'>{postedTime}</span></p>
-                    <p className='font-semibold'>Used Time: <span className='font-normal'>{usedTime}</span></p>
+                    <p className='font-semibold'>Purchased Date: <span className='font-normal'>{usedTime}</span></p>
                 </div>
                 <div className='flex justify-between mt-3'>
                     <button onClick={()=>handleWish(product)} className='btn btn-sm bg-green-600 border-0'>Wishlist</button>

@@ -30,7 +30,7 @@ const AdvertisedProducts = ({advertisedProducts}) => {
                                     </div>
                                     <div className='md:flex justify-between'>
                                         <p className='font-semibold'>Posted Time: <span className='font-normal'>{product?.postedTime}</span></p>
-                                        <p className='font-semibold'>Used Time: <span className='font-normal'>{product?.usedTime}</span></p>
+                                        <p className='font-semibold'>Purchased Date: <span className='font-normal'>{product?.usedTime}</span></p>
                                     </div>
                                 </div>
                             </div>
