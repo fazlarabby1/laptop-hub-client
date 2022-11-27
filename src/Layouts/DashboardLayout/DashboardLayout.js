@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useAdminVerify from '../../hooks/useAdminVerify';
 import useSellerVerify from '../../hooks/useSellerVerify';
 import Navbar from '../../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isSeller] = useSellerVerify(user?.email)
+    const [isAdmin] = useAdminVerify(user?.email);
+    console.log(isAdmin)
     return (
         <div>
             <Navbar></Navbar>
@@ -21,16 +24,20 @@ const DashboardLayout = () => {
 
                         <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Orders</Link></li>
 
-                        { isSeller &&
+                        {isSeller &&
                             <>
-                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/myproducts'>My Products</Link></li>
-                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
-                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Buyers</Link></li>
-                        </>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/myproducts'>My Products</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Buyers</Link></li>
+                            </>
                         }
-                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allcustomers'>All Customers</Link></li>
-                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>Reported Items</Link></li>
+                        {isAdmin &&
+                            <>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allcustomers'>All Customers</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>Reported Items</Link></li>
+                            </>
+                        }
 
                     </ul>
 
