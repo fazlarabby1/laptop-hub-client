@@ -6,8 +6,8 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const LogIn = () => {
-    const { logIn } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { logIn, googleSignIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,7 +27,39 @@ const LogIn = () => {
             .catch(err => setLoginError(err))
     }
 
-    if(token){navigate(from, { replace: true })}
+    const handleGoogleLogIn = () => {
+        setLoginError('');
+        setLogInEmail('');
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                setLogInEmail(user?.email);
+                const userInfo = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    accountType: "user"
+                }
+                saveUserToDB(userInfo);
+            })
+            .catch(err => setLoginError(err))
+    }
+
+    const saveUserToDB = userInfo => {
+        fetch(`${process.env.REACT_APP_API_URL}/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('User Created Successfully');
+                setLogInEmail(userInfo?.email);
+            })
+    }
+
+    if (token) { navigate(from, { replace: true }) }
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -66,7 +98,7 @@ const LogIn = () => {
                 <p className='mt-4'>Don't have an account? <Link to='/signup' className='text-primary underline underline-offset-2'>Please Sign Up</Link></p>
                 <div className="divider"></div>
                 <p className='text-center -mt-5 font-semibold text-green-500'>Social Log In</p>
-                <button className='btn btn-outline mt-4 w-full text-black'>Continue With Google</button>
+                <button onClick={handleGoogleLogIn} className='btn btn-outline mt-4 w-full text-black'>Continue With Google</button>
             </div>
         </div>
     );

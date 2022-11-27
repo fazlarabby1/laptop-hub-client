@@ -115,9 +115,6 @@ const SignUp = () => {
                 </form>
 
                 <p className='mt-4'>Already have an account? <Link to='/login' className='text-primary underline underline-offset-2'>Please Login</Link></p>
-                <div className="divider"></div>
-                <p className='text-center -mt-5 font-semibold text-green-500'>Social Log In</p>
-                <button className='btn btn-outline mt-4 w-full text-black'>Continue With Google</button>
             </div>
         </div>
     );
