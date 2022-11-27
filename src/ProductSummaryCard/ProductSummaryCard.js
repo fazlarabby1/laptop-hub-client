@@ -8,7 +8,7 @@ const ProductSummaryCard = ({ product, setProduct }) => {
     
     useEffect(()=>{
         axios.get(`http://localhost:5000/user/seller?email=${sellerEmail}`)
-        .then(res => setSeller(res.data))
+        .then(res => setSeller(res.data[0]))
     },[setSeller,sellerEmail]);
 
     return (

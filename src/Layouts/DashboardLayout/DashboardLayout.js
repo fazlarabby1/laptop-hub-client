@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import useSellerVerify from '../../hooks/useSellerVerify';
 import Navbar from '../../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext);
+    const [isSeller] = useSellerVerify(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -17,13 +21,17 @@ const DashboardLayout = () => {
 
                         <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Orders</Link></li>
 
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/myproducts'>My Products</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Buyers</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allcustomers'>All Customers</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>Reported Items</Link></li>
-                           
+                        { isSeller &&
+                            <>
+                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/myproducts'>My Products</Link></li>
+                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
+                            <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Buyers</Link></li>
+                        </>
+                        }
+                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allcustomers'>All Customers</Link></li>
+                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>Reported Items</Link></li>
+
                     </ul>
 
                 </div>
