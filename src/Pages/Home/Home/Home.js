@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import AboutUs from '../AboutUs/AboutUs';
 import AdvertisedProducts from '../AdvertisedProducts/AdvertisedProducts';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
@@ -21,6 +22,8 @@ const Home = () => {
             {advertisedProducts.length > 0 &&
                     <AdvertisedProducts advertisedProducts={advertisedProducts}></AdvertisedProducts>
             }
+
+            <AboutUs></AboutUs>
         </div>
     );
 };

@@ -35,10 +35,10 @@ const ProductSummaryCard = ({ product, setProduct }) => {
             email: user.email,
             price,
             productId: product._id,
-            productImg: product.image
+            productImg: product.image,
+            wish: 'wished'
         }
-        console.log(booking);
-        fetch(`${process.env.REACT_APP_API_URL}/wishproducts`, {
+        fetch(`${process.env.REACT_APP_API_URL}/bookingwish`, {
             method: 'POST',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`,
@@ -53,7 +53,6 @@ const ProductSummaryCard = ({ product, setProduct }) => {
                 }
                 else {
                     toast.error(data.message);
-                    setProduct(null);
                 }
             })
     }

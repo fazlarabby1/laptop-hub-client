@@ -9,7 +9,7 @@ import './AdvertiseProducts.css';
 const AdvertisedProducts = ({advertisedProducts}) => {
 
     return (
-        <div className='mb-10'>
+        <div className='mb-16'>
             <h2 className='text-center text-4xl font-bold text-blue-600 mb-5'>Advertise Products</h2>
             <>
                 <Swiper

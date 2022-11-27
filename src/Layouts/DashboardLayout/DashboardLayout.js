@@ -28,7 +28,7 @@ const DashboardLayout = () => {
                             <>
                                 <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/myproducts'>My Products</Link></li>
                                 <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Buyers</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link >My Buyers</Link></li>
                             </>
                         }
                         {isAdmin &&

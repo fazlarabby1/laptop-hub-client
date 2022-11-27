@@ -19,7 +19,7 @@ const BannerItem = ({data}) => {
                     You can buy and sell used laptop through this site. Try to purchase products from blue badge owners to avoid any risk.
                 </p>
             </div>
-            <div className="hidden mt-16 md:mt-40 absolute md:flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 lg:top-60 md:top-80">
+            <div className="hidden mt-16 md:mt-40 absolute md:flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 lg:top-60 md:top-96">
             <Link to='/signup'><button className="btn bg-blue-500 border-0">Join Us</button></Link>
             </div>
             <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
