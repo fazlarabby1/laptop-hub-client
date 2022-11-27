@@ -21,7 +21,7 @@ const Categories = () => {
     }, [])
     return (
         <div className='mb-10'>
-            <h2 className='text-center text-4xl font-bold text-blue-600'>Welcome to Laptop Resale</h2>
+            <h2 className='text-center text-4xl font-bold text-blue-600'>Welcome to Laptop HUB</h2>
             <p className='text-center text-3xl font-semibold mt-3 text-warning'>Here are the categories of <br /> available used Laptop</p>
             {
                 loading === true && <Loading></Loading>

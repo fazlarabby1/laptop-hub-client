@@ -16,6 +16,11 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/dashboard'>Dashboard</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-ghost text-orange-300 rounded' : 'btn btn-ghost'} to='/blogs'>Blogs</NavLink></li>
+        <li>{user ?
+            <button onClick={handleLogOut} className="btn rounded-lg">Log Out</button>
+            :
+            <Link to='/login' className="btn rounded-lg">Log In</Link>
+        }</li>
     </>
     return (
         <div className="navbar bg-blue-600 text-white shadow-lg rounded">
@@ -28,7 +33,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl italic">laptop-HUB</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -36,11 +41,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ?
-                    <button onClick={handleLogOut} className="btn">Log Out</button>
-                    :
-                    <Link to='/login' className="btn">Log In</Link>
-                }
+
             </div>
             <label title='Dashboard' tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost md:mx-5 lg:hidden">
                 <FaSlidersH className='text-2xl' />

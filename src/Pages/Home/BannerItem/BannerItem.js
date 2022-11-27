@@ -14,9 +14,9 @@ const BannerItem = ({data}) => {
                     Get Your Dream Laptop from Us
                 </h1>
             </div>
-            <div className="absolute flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 top-1/2 md:mt-20 lg:mt-0 mt-20 md:pl-5">
+            <div className="absolute flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 top-1/2 md:mt-24 lg:mt-0 mt-20 md:pl-5">
                 <p className='text-white text-xl'>
-                    We sell authentic products. Try to purchase products from blue badge owners to avoid any risk.
+                    You can buy and sell used laptop through this site. Try to purchase products from blue badge owners to avoid any risk.
                 </p>
             </div>
             <div className="hidden mt-16 md:mt-40 absolute md:flex justify-center transform -translate-y-1/2 md:w-2/5 lg:left-64 xl:left-96 lg:top-60 md:top-80">

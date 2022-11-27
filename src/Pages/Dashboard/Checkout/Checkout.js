@@ -15,7 +15,6 @@ const Checkout = ({ product }) => {
     const elements = useElements();
 
     useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
         fetch(`${process.env.REACT_APP_API_URL}/create-payment-intent`, {
             method: "POST",
             headers: {

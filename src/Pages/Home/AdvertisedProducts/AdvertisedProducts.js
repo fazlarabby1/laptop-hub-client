@@ -17,7 +17,7 @@ const AdvertisedProducts = ({advertisedProducts}) => {
                 >
                     {
                         advertisedProducts.map(product => <SwiperSlide key={product._id}>
-                            <div className="w-full md:w-2/4 lg:w-1/3 rounded-md shadow-lg border">
+                            <div className="w-full md:w-2/4 lg:w-1/3 rounded-md shadow-lg border-2">
                                 <img src={product?.image} alt="" className="w-4/5 h-60 mx-auto" />
                                 <div className="p-3">
                                     <div>
