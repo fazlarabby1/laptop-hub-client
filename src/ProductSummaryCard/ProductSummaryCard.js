@@ -10,7 +10,7 @@ const ProductSummaryCard = ({ product, setProduct }) => {
     const { _id, brand, image, location, originalPrice, postedTime, price, productName, sellerName, usedTime, sellerEmail } = product;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/user/seller?email=${sellerEmail}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/user/seller?email=${sellerEmail}`)
             .then(res => setSeller(res.data[0]))
     }, [setSeller, sellerEmail]);
 
@@ -36,7 +36,7 @@ const ProductSummaryCard = ({ product, setProduct }) => {
             price,
             productId: product._id,
             productImg: product.image,
-            wish: 'wished'
+            wish: "wished"
         }
         fetch(`${process.env.REACT_APP_API_URL}/bookingwish`, {
             method: 'POST',

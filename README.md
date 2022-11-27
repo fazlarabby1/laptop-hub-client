@@ -3,9 +3,11 @@
 ***************************
 Live Links and Code links
 Client Site Live Link: 
-Client Site Code Link:
-Server Site Live Link:
-Server Site Code Link:
+Client Site Code Link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-fazlarabby1
+
+***************************
+Server Site Live Link: https://assignment-12-server-seven.vercel.app
+Server Site Code Link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-fazlarabby1
 ***************************
 
 Client site Dependencies
