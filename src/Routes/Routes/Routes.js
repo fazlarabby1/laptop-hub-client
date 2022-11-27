@@ -16,6 +16,8 @@ import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import ReportedProducts from "../../Pages/Dashboard/ReportedProducts/ReportedProducts";
+import MyWishList from "../../Pages/Dashboard/MyWishList/MyWishList";
 
 export const router = createBrowserRouter([
     {
@@ -55,12 +57,20 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
             {
+                path: '/dashboard/mywishlist',
+                element: <PrivateRoute><MyWishList></MyWishList></PrivateRoute>
+            },
+            {
                 path: '/dashboard/allsellers',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/allcustomers',
                 element: <AdminRoute><AllCustomers></AllCustomers></AdminRoute>
+            },
+            {
+                path: '/dashboard/reportedproducts',
+                element: <AdminRoute><ReportedProducts></ReportedProducts></AdminRoute>
             },
             {
                 path: '/dashboard/addproduct',

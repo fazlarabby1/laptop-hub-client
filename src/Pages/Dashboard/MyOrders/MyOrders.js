@@ -44,7 +44,8 @@ const MyOrders = () => {
     return (
         <div className='mt-14 lg:ml-14 ml-0'>
             <h1 className='text-2xl font-semibold mb-6'>My Orders</h1>
-            <div className="overflow-x-auto">
+            { bookings.length ?
+                <div className="overflow-x-auto">
                 <table className="table w-full">
 
                     <thead>
@@ -82,7 +83,9 @@ const MyOrders = () => {
                         }
                     </tbody>
                 </table>
-            </div>
+            </div> :
+            <p className='text-2xl font-semibold'>You don't have any orders yet. Please purchase some products</p>
+            }
         </div>
     );
 };

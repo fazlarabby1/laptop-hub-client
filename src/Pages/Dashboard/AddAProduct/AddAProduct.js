@@ -1,15 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddAProduct = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const date = new Date().toLocaleDateString("de-DE");
     const imageHostKey = process.env.REACT_APP_imagebb_key;
+
+    if(loading){
+        return <Loading></Loading>
+    }
 
     const laptopBrands = [
         { id: 1, name: "Dell" },
@@ -43,7 +49,7 @@ const AddAProduct = () => {
         else{
             categoryId = '637fa71b345d495b7701f0ec';
         }
-        
+        setLoading(true);
         fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`,{
             method: 'POST',
             body: formData
@@ -78,6 +84,7 @@ const AddAProduct = () => {
                 .then(res => res.json())
                 .then(result => {
                     toast.success('Product added successfully');
+                    setLoading(false);
                     navigate('/dashboard/myproducts')
                 })
                 .catch(err => console.error(err))

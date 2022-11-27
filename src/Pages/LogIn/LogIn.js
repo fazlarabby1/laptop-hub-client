@@ -2,18 +2,25 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { logIn, googleSignIn } = useContext(AuthContext);
+    const { logIn, googleSignIn, loading } = useContext(AuthContext);
     const [loginError, setLoginError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const [logInEmail, setLogInEmail] = useState('');
-    const [token] = useToken(logInEmail)
+    const [token] = useToken(logInEmail);
+    
+    if (token) { navigate(from, { replace: true }) }
+    
+    if(loading){
+        return <Loading></Loading>
+    }
 
     const handleLogIn = data => {
         const email = data.email;
@@ -58,8 +65,6 @@ const LogIn = () => {
                 setLogInEmail(userInfo?.email);
             })
     }
-
-    if (token) { navigate(from, { replace: true }) }
 
     return (
         <div className='h-[800px] flex justify-center items-center'>

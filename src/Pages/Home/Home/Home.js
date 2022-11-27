@@ -17,7 +17,10 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <Categories></Categories>
-            {advertisedProducts && <AdvertisedProducts advertisedProducts={advertisedProducts}></AdvertisedProducts>}
+
+            {advertisedProducts.length > 0 &&
+                    <AdvertisedProducts advertisedProducts={advertisedProducts}></AdvertisedProducts>
+            }
         </div>
     );
 };

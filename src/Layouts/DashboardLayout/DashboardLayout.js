@@ -9,7 +9,6 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isSeller] = useSellerVerify(user?.email)
     const [isAdmin] = useAdminVerify(user?.email);
-    console.log(isAdmin)
     return (
         <div>
             <Navbar></Navbar>
@@ -23,6 +22,7 @@ const DashboardLayout = () => {
                     <ul className="menu px-4 bg-white lg:bg-none lg:bg-transparent lg:w-56 w-5/6 text-base-content">
 
                         <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>My Orders</Link></li>
+                        <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/mywishlist'>My Wish List</Link></li>
 
                         {isSeller &&
                             <>
@@ -35,7 +35,7 @@ const DashboardLayout = () => {
                             <>
                                 <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
                                 <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/allcustomers'>All Customers</Link></li>
-                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard'>Reported Items</Link></li>
+                                <li className='hover:bg-violet-700 hover:text-white rounded'><Link to='/dashboard/reportedproducts'>Reported Items</Link></li>
                             </>
                         }
 
