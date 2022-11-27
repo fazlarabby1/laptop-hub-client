@@ -6,7 +6,11 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/sellers`);
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/sellers`,{
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -14,6 +18,9 @@ const AllSellers = () => {
 
     const handleVerify = (id) => {
         fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'PUT'
         })
             .then(res => res.json())
@@ -27,6 +34,9 @@ const AllSellers = () => {
 
     const handleDeleteSeller = id => {
         fetch(`${process.env.REACT_APP_API_URL}/users/sellers/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'DELETE'
         })
             .then(res => res.json())

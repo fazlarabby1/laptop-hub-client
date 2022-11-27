@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -12,7 +12,11 @@ const MyProducts = () => {
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/myproducts?email=${user?.email}`)
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/myproducts?email=${user?.email}`,{
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             const data = res.json();
             return data;
         }
@@ -24,6 +28,9 @@ const MyProducts = () => {
 
     const handleAdvertise = id => {
         fetch(`${process.env.REACT_APP_API_URL}/myproducts/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'PUT'
         })
             .then(res => res.json())
@@ -37,6 +44,9 @@ const MyProducts = () => {
 
     const handleDeleteProduct = id => {
         fetch(`${process.env.REACT_APP_API_URL}/myproducts/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'DELETE'
         })
             .then(res => res.json())

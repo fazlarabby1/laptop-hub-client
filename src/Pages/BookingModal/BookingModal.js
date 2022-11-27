@@ -27,25 +27,26 @@ const BookingModal = ({ product, setProduct }) => {
             productId,
             productImg
         }
-        
-        fetch(`${process.env.REACT_APP_API_URL}/bookings`,{
+
+        fetch(`${process.env.REACT_APP_API_URL}/bookings`, {
             method: 'POST',
             headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(booking)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                toast.success('Booking successful');
-                setProduct(null);
-            }
-            else{
-                toast.error(data.message);
-                setProduct(null);
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Booking successful');
+                    setProduct(null);
+                }
+                else {
+                    toast.error(data.message);
+                    setProduct(null);
+                }
+            })
     }
     return (
         <div>

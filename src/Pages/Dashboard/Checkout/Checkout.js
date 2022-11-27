@@ -18,8 +18,8 @@ const Checkout = ({ product }) => {
         fetch(`${process.env.REACT_APP_API_URL}/create-payment-intent`, {
             method: "POST",
             headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`,
                 'content-type': "application/json",
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ price })
         })
@@ -82,8 +82,8 @@ const Checkout = ({ product }) => {
             fetch(`${process.env.REACT_APP_API_URL}/payments`, {
                 method: 'POST',
                 headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json',
-                    // authorization: `bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(paymentInfo)
             })

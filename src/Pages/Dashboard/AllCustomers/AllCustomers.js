@@ -7,13 +7,20 @@ const AllCustomers = () => {
     const {data: customers = [], refetch} = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/allcustomers`);
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/allcustomers`,{
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+            });
             const data = await res.json();
             return data;
         }
     });
     const handleDeleteCustomer = id =>{
         fetch(`${process.env.REACT_APP_API_URL}/users/allcustomers/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -11,14 +11,21 @@ const MyOrders = () => {
     const { data: bookings = [], refetch, isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/bookings?email=${user?.email}`);
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/bookings?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
     });
 
-    const handleDeleteOrder = id =>{
+    const handleDeleteOrder = id => {
         fetch(`${process.env.REACT_APP_API_URL}/bookings/${id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -30,10 +37,10 @@ const MyOrders = () => {
             })
     }
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     };
-    
+
     return (
         <div className='mt-14 lg:ml-14 ml-0'>
             <h1 className='text-2xl font-semibold mb-6'>My Orders</h1>
